@@ -8,6 +8,7 @@ ifneq (,$(findstring MINGW,$(OS))$(findstring MSYS,$(OS)))
 	ARCH := $(shell systeminfo 2>/dev/null | grep "System Type" | grep ARM64 > /dev/null && echo "arm64" || echo "amd64" )
 else ifeq ($(OS),Linux)
 	OS := linux
+	WSL2 := $(shell uname -r | grep "microsoft-standard-WSL2")
 else ifeq ($(OS),Darwin)
 	OS := darwin
 endif
